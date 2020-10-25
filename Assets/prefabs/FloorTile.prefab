@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33213620594348836}
   - component: {fileID: 65930609647222050}
   - component: {fileID: 23480304006748552}
+  - component: {fileID: 5602173816073454561}
   m_Layer: 0
   m_Name: FloorTile
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1680193034015120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 5, y: 100, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,10 +69,12 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 45d0a45538569f94abc1a6cf3f742b33, type: 2}
+  - {fileID: 2100000, guid: f38b6a98972063f4a85bc1f43a3d03ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,3 +95,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5602173816073454561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680193034015120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bd192d39da364499133c5ef1bd5238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matOne: {fileID: 2100000, guid: e170ae776bafe7c4e960f567817ee66d, type: 2}
+  matTwo: {fileID: 2100000, guid: f38b6a98972063f4a85bc1f43a3d03ee, type: 2}
+  matThree: {fileID: 2100000, guid: 60bd9540eb2374d40afcbe17dded95fb, type: 2}
+  randomInt: 0

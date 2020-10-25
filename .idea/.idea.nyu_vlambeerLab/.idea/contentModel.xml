@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\harry\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\harry\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_nyu_vlambeerLab.379225996.00" t="ExcludeRecursive" />
+    <e p="E:\GithubKraken\nyu_vlambeerLab" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="NewBehaviourScript.cs" t="Include" />
+        <e p="scripts" t="Include">
+          <e p="Cam.cs" t="Include" />
+          <e p="CanvasController.cs" t="Include" />
+          <e p="Floordelete.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
+          <e p="Pathmaker.cs" t="Include" />
+        </e>
+      </e>
+      <e p="nyu_vlambeerLab.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

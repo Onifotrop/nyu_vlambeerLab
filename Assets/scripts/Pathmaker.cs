@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 // MAZE PROC GEN LAB
 // all students: complete steps 1-6, as listed in this file
@@ -19,8 +22,101 @@ public class Pathmaker : MonoBehaviour {
 //	Declare a public Transform called floorPrefab, assign the prefab in inspector;
 //	Declare a public Transform called pathmakerSpherePrefab, assign the prefab in inspector; 		// you'll have to make a "pathmakerSphere" prefab later
 
+	private int counter = 0;
+	public int mapSize;
+	public static int globalTileCount;
+	public Transform floorPrefab;
+	public Transform pathmakerSpherePrefab;
+	public GameObject pathmakerSphere;
+	public GameObject floor;
+	public static List<GameObject> fList = new List<GameObject>();
+	
+	//this is for tuning the possibilities
+	
+	//Turn Right
+	//public bool randomRight;
+	public float fltRightMin;
+	public float fltRightMax;
+	//Turn Left
+	//public bool randomLeft;
+	public float fltLeftMin;
+	public float fltLeftMax;
+	//Spawn New Pathmaker
+	public float newPathMakerMin;
+	public float newPathMakerMax;
+	//random pathmaker lifetime
+	public float pathLifeTimeMin;
+	public float pathLifeTimeMax;
+	//random vertical movement
+	public float goUpMin;
+	public float goUpMax;
+	public float goDownMin;
+	public float goDownMax;
+	//public int verDelta;
+	public float verDelta;
+	//counting average position
+	public static float xPos;
+	public static float yPos;
+	public static float zPos;
+
+	void Start()
+	{
+		mapSize = (int)(Random.Range(pathLifeTimeMin, pathLifeTimeMax));
+	}
 
 	void Update () {
+
+		
+		//Debug.
+		//print("Global Tiles:"+ globalTileCount);
+		//print("Floor list count:"+ fList.Count);
+		//print("xPos="+xPos+"yPos="+yPos);
+		//if morethan max500, destroy script to stop.
+		if (Pathmaker.globalTileCount >= GameManager.maximumMapSize)
+		{
+			Destroy(this);
+		}
+		//create the flrs
+		if (counter < mapSize)
+		{
+			float randomNum = Random.Range(0.0f, 1.0f);
+			//turn right
+			if (fltRightMin < randomNum && randomNum < fltRightMax)
+			{
+				this.transform.Rotate(0, 90, 0);
+			}
+			//turn left
+			else if(fltLeftMin < randomNum && randomNum < fltLeftMax)
+			{
+				this.transform.Rotate(0, -90, 0);
+			}
+			else if (goUpMin < randomNum && randomNum < goUpMax)
+			{
+				this.transform.Translate(0, verDelta, 0);
+			}
+			else if (goDownMin < randomNum && randomNum < goDownMax)
+			{
+				this.transform.Translate(0, -verDelta, 0);
+			}
+			//spawn new pathmaker
+			else if(newPathMakerMin < randomNum && randomNum < newPathMakerMax)
+			{
+				GameObject  newPMSP = Instantiate(pathmakerSphere,this.transform.position,Quaternion.Euler(0,0,0));
+			}
+			GameObject newFP = Instantiate(floor, this.transform.position, Quaternion.Euler(0, 0, 0));
+			xPos += this.transform.position.x;
+			yPos += this.transform.position.y;
+			zPos += this.transform.position.z;
+			Pathmaker.fList.Add(newFP);
+			Pathmaker.globalTileCount += 1;
+			transform.Translate(5,0,0); 
+			counter += 1;
+		}
+		else
+		{
+			Destroy(this.gameObject);
+		}
+
 //		If counter is less than 50, then:
 //			Generate a random number from 0.0f to 1.0f;
 //			If random number is less than 0.25f, then rotate myself 90 degrees;
@@ -34,7 +130,6 @@ public class Pathmaker : MonoBehaviour {
 //		Else:
 //			Destroy my game object; 		// self destruct if I've made enough tiles already
 	}
-
 } 
 
 // MORE STEPS BELOW!!!........
